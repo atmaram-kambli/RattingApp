@@ -2,11 +2,14 @@
 
 // Rating - changing rate button color
 const btn = document.querySelector(".rating");
+let n;
+let num = document.querySelector("#num");
+
 function addButtonEffect(e) {
     let target = e.target;
-    let n = target.innerText;
+    n = target.innerText;
     console.log(n);
-
+    
     if(target.matches('button')) {
         for(let i=0; i<n; i++) {
             btn.children[i].style.backgroundColor = `hsl(28, 100%, 50%)`;
@@ -23,11 +26,14 @@ btn.addEventListener('click', addButtonEffect);
 
 const submit = document.querySelector(".submit");
 const rateBox = document.querySelector(".first-box");
+const thankBox = document.querySelector(".thank-box")
 
 function showThankingMsg(e) {
     let target = e.target;
     if(target.matches('button')) {
-        rateBox.childNodes.classList.remove('first-box');        
+        rateBox.classList.add("hidden");     
+        thankBox.classList.remove("hidden");
+        num.innerText = n;
     }
 }
 submit.addEventListener('click', showThankingMsg);
